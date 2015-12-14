@@ -9,7 +9,7 @@ class Raindrop { //create class for raindrop
     c = color(208, 237, 247); //makes raindrop blue
     vel = PVector.random2D(); //velocity with random magnitude of 1
     vel.mult(random(2, 7)); //multiplies velocity
-    g = new PVector (0, 0.2); //acceleration of 0,2
+    g = new PVector (0.1, 0.2); //acceleration of 0,2
   }
   Raindrop (float x, float y) {
     diam = 100; //diameter is 20
@@ -33,6 +33,7 @@ class Raindrop { //create class for raindrop
   void reset () {
     loc.y = 0; //brings raindrop back to top of screen
     loc.x = random(diam/2, width - diam/2); //resets raindrop in x direction 
+    vel.x = 0; 
     vel.y = 0; //this way raindrop wont speed up
   }
   boolean isInContactWith(PVector x) {

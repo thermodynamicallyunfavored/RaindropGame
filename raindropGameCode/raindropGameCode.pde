@@ -1,5 +1,10 @@
+int count = 60; //to make arrays, declare count and initialize
+
+Raindrop [] r = new Raindrop [count]; 
+
+
 PVector mouse;   //declare a P
-Raindrop r;      //declare a new Raindrop called r
+//Raindrop r;      //declare a new Raindrop called r
 
 // On your own, create an array of Raindrop objects instead of just one
 // Use the array instead of the single object
@@ -8,26 +13,30 @@ Raindrop r;      //declare a new Raindrop called r
 
 void setup() {
   size(1200, 800);
-  mouse = new PVector();                //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
-  r = new Raindrop(random(width), 0);   //Initialize r. The parameters used are the initial x and y positions
+  mouse = new PVector();  //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
+  for (int i = 0; i < count; i ++) {
+    r [i] = new Raindrop(random(width), 0);   //Initialize r. The parameters used are the initial x and y positions
+  }
 }
 
 void draw() {
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
   background(0, 200, 255);
-  r.fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
-  r.display();      //display the raindrop
-  if (r.isInContactWith(mouse)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
-    r.reset();                         //if it is, reset the raindrop
-    println("Touched the raindrop!   Resetting....");
-  }
-  if (r.loc.y > height + r.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
-    r.reset();                           //if it does, reset the raindrop
-    println("You can't catch me, I'm the gingerbread raindrop!   Resetting....");
-  }
+  for (int i = 0; i < count; i ++) {
+    r[i].fall();         //make the r fall. It should accelerate as if pulled towards the ground by earth's gravity
+    r[i].display();      //display the raindrop
+    if (r[i].isInContactWith(mouse)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+      r[i].reset();                         //if it is, reset the raindrop
+      println("Touched the raindrop!   Resetting....");
+    }
+    if (r[i].loc.y > height + r[i].diam/2) {     //check to see if the raindrop goes below the bottom of the screen
+      r[i].reset();                           //if it does, reset the raindrop
+      println("You can't catch me, I'm the gingerbread raindrop!   Resetting....");
+    }
 
-  if (r.loc.x < r.diam/2) {
-    r.reset();
-    println("Your raindrop ran away   :(    Resetting....");
+    if (r[i].loc.x < r[i].diam/2) {
+      r[i].reset();
+      println("Your raindrop ran away   :(    Resetting....");
+    }
   }
 }
