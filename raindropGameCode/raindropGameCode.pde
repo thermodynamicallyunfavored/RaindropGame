@@ -1,4 +1,4 @@
-int count = 60; //to make arrays, declare count and initialize
+int count = 600; //to make arrays, declare count and initialize
 
 Raindrop [] r = new Raindrop [count]; 
 
@@ -15,7 +15,7 @@ void setup() {
   size(1200, 800);
   mouse = new PVector();  //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
   for (int i = 0; i < count; i ++) {
-    r [i] = new Raindrop(random(width), 0);   //Initialize r. The parameters used are the initial x and y positions
+    r [i] = new Raindrop(random(width), random(-height, 0));   //Initialize r. The parameters used are the initial x and y positions
   }
 }
 
