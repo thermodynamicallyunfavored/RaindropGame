@@ -19,8 +19,15 @@ void draw() {
   r.display();      //display the raindrop
   if (r.isInContactWith(mouse)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
     r.reset();                         //if it is, reset the raindrop
+    println("Touched the raindrop!   Resetting....");
   }
   if (r.loc.y > height + r.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
     r.reset();                           //if it does, reset the raindrop
+    println("You can't catch me, I'm the gingerbread raindrop!   Resetting....");
+  }
+
+  if (r.loc.x < r.diam/2) {
+    r.reset();
+    println("Your raindrop ran away   :(    Resetting....");
   }
 }
