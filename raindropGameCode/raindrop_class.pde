@@ -36,8 +36,8 @@ class Raindrop { //create class for raindrop
     vel.x = 0; 
     vel.y = 0; //this way raindrop wont speed up
   }
-  boolean isInContactWith(PVector x) {
-    if (dist(loc.x, loc.y, mouseX, mouseY) < diam/2) { //if mouse is in raindrop
+  boolean isInContactWith(Bucket b) {
+    if (loc.dist(b.loc) < diam/2 + b.diam/2) { //if mouse is in raindrop
       return true;
     } else {
       return false;
