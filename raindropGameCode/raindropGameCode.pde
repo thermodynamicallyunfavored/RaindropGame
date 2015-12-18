@@ -1,8 +1,5 @@
-//int count = 1000; //to make arrays, declare count and initialize
-
 ArrayList<Raindrop> rds = new ArrayList <Raindrop>(); //make array list
 
-//Raindrop [] r = new Raindrop [count]; //array of raindrops
 Bucket b; //make bucket catcher
 
 
@@ -27,7 +24,9 @@ void draw() {
   println(rds.size());
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
   background(0, 200, 255);
-  rds.add(new Raindrop(random(width), random(-height, 0))); 
+  for (int i = 0; i < 5; i++) { 
+    rds.add(new Raindrop(random(width), random(-height, 0)));
+  }
   b.update(); 
   for (int i= rds.size() - 1; i >= 0; i --) {
     Raindrop r = rds.get(i); 
