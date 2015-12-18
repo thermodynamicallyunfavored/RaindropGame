@@ -1,6 +1,8 @@
-int count = 1000; //to make arrays, declare count and initialize
+//int count = 1000; //to make arrays, declare count and initialize
 
-Raindrop [] r = new Raindrop [count]; //array of raindrops
+ArrayList <Raindrop> = new ArrayList <rds>(); //make array list
+
+//Raindrop [] r = new Raindrop [count]; //array of raindrops
 Bucket b; //make bucket catcher
 
 
@@ -15,9 +17,11 @@ PVector mouse;   //declare a P
 void setup() {
   size(1200, 800);
   mouse = new PVector();  //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
-  for (int i = 0; i < count; i ++) {
-    r [i] = new Raindrop(random(width), random(-height, 0));   //Initialize r. The parameters used are the initial x and y positions
-  }
+  
+  rds.add(new Raindrop(random(width), random(-height,0)); 
+  //for (int i = 0; i < count; i ++) {
+  // r [i] = new Raindrop(random(width), random(-height, 0));   //Initialize r. The parameters used are the initial x and y positions
+  //}
   b = new Bucket(200); //bucket with diameter of 20
 }
 
