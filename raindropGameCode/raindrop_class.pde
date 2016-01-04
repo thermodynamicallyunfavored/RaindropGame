@@ -11,6 +11,7 @@ class Raindrop { //create class for raindrop
     vel.mult(random(2, 7)); //multiplies velocity
     g = new PVector (0.1, 0.2); //acceleration of 0,2
   }
+  
   Raindrop (float x, float y) {
     diam = 20; //diameter is 20
     loc = new PVector(x, y);
