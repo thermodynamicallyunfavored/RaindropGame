@@ -30,12 +30,14 @@ class Raindrop { //create class for raindrop
     loc.add(vel); //gives raindrop velocity
     vel.add(g); // add gravity
   }
+  
   void reset () {
     loc.y = 0; //brings raindrop back to top of screen
     loc.x = random(diam/2, width - diam/2); //resets raindrop in x direction 
     vel.x = 0; 
     vel.y = 0; //this way raindrop wont speed up
   }
+  
   boolean isInContactWith(Bucket b) {
     if (loc.dist(b.loc) < diam/2 + b.diam/2) { //if mouse is in raindrop
       return true;

@@ -1,19 +1,20 @@
 class Bucket { //declare new class for catching raindrops
+
   PVector loc;
   int diam;
   color c; 
 
   Bucket (int tdiam) { //create constructor
     diam = tdiam; //make size of bucket changeable
-    c = color (242, 81, 56);
+    c = color (242, 81, 56); //color
     loc = new PVector (random(width), random(height));
   }
 
   void display () { //function display bucket
     fill(c); //makes bucket red
-    ellipse (loc.x, loc.y, diam, diam);
+    ellipse (loc.x, loc.y, diam, diam); //draw ellipse
   }
   void update () {
-    loc.set(mouseX, mouseY);
+    loc.set(mouseX, mouseY); //set location of ellipse to mouse
   }
 }
