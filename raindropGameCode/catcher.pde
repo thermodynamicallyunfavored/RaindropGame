@@ -17,12 +17,10 @@ class Bucket { //declare new class for catching raindrops
   void update () {
     loc.set(mouseX, mouseY); //makes loc = mouse
   }
-  
-  void decrease (float a){ //function to decrease size of img
-    float c = 250; 
-    float d = 278; 
+
+  void decrease (float a) { //function to decrease size of img
     image(s, loc.x, loc.y, c, d);
-    c -= a; 
-    d -= a; 
+    c = c*a;  
+    d = c*a; 
   }
 }

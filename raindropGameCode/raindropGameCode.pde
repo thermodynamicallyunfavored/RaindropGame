@@ -52,11 +52,11 @@ void draw() {
       if (count >= 500) {
         s++; //increase score
         count = 0; //reset count to 0
-        b.decrease(-10); //increase the bucket's diameter by 5
+        b.decrease(1.1); //increase the bucket's diameter by 5
       } 
 
       if (count <= 400 && s >= 5) { //if the bucket has caught < 199 raindrops and score is > 5
-        b.decrease(100);
+        b.decrease(.8);
       }
 
       if (r.loc.y > height) { //if randrop hits the bottom of the screen
@@ -77,3 +77,4 @@ void draw() {
       text("YOU WIN", width/2, height/2); //you win
     }
   }
+}

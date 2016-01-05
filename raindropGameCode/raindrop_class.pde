@@ -37,4 +37,3 @@ class Raindrop { //create class for raindrop
     }
   }
 }
-}
