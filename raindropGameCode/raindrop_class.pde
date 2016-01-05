@@ -30,10 +30,11 @@ class Raindrop { //create class for raindrop
     vel.y = 0; //this way raindrop wont speed up
   }
   boolean isInContactWith(Bucket b) {
-    if (loc.dist(b.loc) < diam/2 + b.loc.x*.3) { //if mouse near snowman
+    if (loc.dist(b.loc) < diam/2 + b.loc.y*.3) { //if mouse near snowman
       return true;
     } else {
       return false;
     }
   }
+}
 }
