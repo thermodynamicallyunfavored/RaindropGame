@@ -8,9 +8,11 @@ class Bucket { //declare new class for catching raindrops
     s = loadImage("snowman.png"); 
     loc = new PVector (random(width), random(height));
     imageMode(CENTER); //centers image
+    c = 250;
+    d = 278;
   }
 
-  void display (float c, float d) { //function display bucket
+  void display () { //function display bucket
     image (s, loc.x, loc.y, c, d);
   }
 
@@ -19,8 +21,7 @@ class Bucket { //declare new class for catching raindrops
   }
 
   void decrease (float a) { //function to decrease size of img
-    image(s, loc.x, loc.y, c, d);
-    c = c*a;  
-    d = c*a; 
+    c = c- a;  
+    d = d - a;
   }
 }

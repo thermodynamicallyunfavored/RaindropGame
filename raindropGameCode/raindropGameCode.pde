@@ -37,7 +37,7 @@ void draw() {
   }
 
   b.update(); //updates b.loc as mouse
-  b.display(250, 278); //display bucket
+  b.display(); //display bucket
 
   for (int i= rds.size() - 1; i >= 0; i --) {
     Raindrop r = rds.get(i); //getting item in array rds at index i
@@ -49,14 +49,13 @@ void draw() {
       count++; //increase count each time bucket touches raindrop
       r.diam += 5; //increase diam of raindrop
 
-      if (count >= 500) {
+      if (count >= 300) {
         s++; //increase score
         count = 0; //reset count to 0
-        b.decrease(1.1); //increase the bucket's diameter by 5
       } 
 
-      if (count <= 400 && s >= 5) { //if the bucket has caught < 199 raindrops and score is > 5
-        b.decrease(.8);
+      if (count <= 250 && s >= 5) { //if the bucket has caught < 199 raindrops and score is > 5
+        b.decrease(.1);
       }
 
       if (r.loc.y > height) { //if randrop hits the bottom of the screen
@@ -75,6 +74,7 @@ void draw() {
       background(0, 200, 255); //bg color
       textSize(50); 
       text("YOU WIN", width/2, height/2); //you win
+      rds.clear();
     }
   }
 }
