@@ -3,15 +3,7 @@ class Raindrop { //create class for raindrop
   int diam ; //diameter for raindrop
   color c; //color for raindrop
 
-  Raindrop () {
-    diam = 60; //diameter is 20
-    loc = new PVector(random(diam, width-diam), random(diam, height-diam));
-    c = color(208, 237, 247); //makes raindrop blue
-    vel = PVector.random2D(); //velocity with random magnitude of 1
-    vel.mult(random(2, 7)); //multiplies velocity
-    g = new PVector (0.1, 0.2); //acceleration of 0,2
-  }
-  
+
   Raindrop (float x, float y) {
     diam = 20; //diameter is 20
     loc = new PVector(x, y);
@@ -31,16 +23,14 @@ class Raindrop { //create class for raindrop
     loc.add(vel); //gives raindrop velocity
     vel.add(g); // add gravity
   }
-  
   void reset () {
     loc.y = 0; //brings raindrop back to top of screen
     loc.x = random(diam/2, width - diam/2); //resets raindrop in x direction 
     vel.x = 0; 
     vel.y = 0; //this way raindrop wont speed up
   }
-  
   boolean isInContactWith(Bucket b) {
-    if (loc.dist(b.loc) < diam/2 + b.diam/2) { //if mouse is in raindrop
+    if (loc.dist(b.loc) < diam/2 + b.loc.x*.3) { //if mouse near snowman
       return true;
     } else {
       return false;
