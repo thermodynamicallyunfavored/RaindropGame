@@ -8,6 +8,9 @@ PVector mouse;   //declare a Pvector mouse
 
 int s = 0; //declare + intialize s = score
 int count = 0; //counts number of raindrops in bucket
+int gamemode = 0; //variabl efor game mode
+
+
 
 void setup() {
   size(1200, 800); //set size of screen
@@ -21,17 +24,41 @@ void setup() {
 
 
 void draw () {
-
-  background(0, 200, 255); //bg color
-  textSize(100); 
-  fill(255); 
-  text("Snowman", width/2, 350); //beginning info and such
-  textSize(20); 
-  text("The goal of this game is to make Frosty as big as possible by collecting snowballs.", width/2, height/2); 
-  text("Press 'SHIFT' to start", width/2, 430); 
-
-  if (keyCode == SHIFT) { //if shift key is pressed
+  if (gamemode == 0) { //if game mode is 0 , show start screen
+    background(0, 200, 255); //bg color
+    textSize(100); 
+    fill(255); 
+    text("Snowman", width/2, 350); //beginning info and such
+    textSize(20); 
+    text("The goal of this game is to make Frosty as big as possible by collecting snowballs.", width/2, height/2); 
+    text("Press 'SHIFT' to start", width/2, 430);
+    if (keyPressed && keyCode == SHIFT) { //if shift key is pressed
+      gamemode = 1; //game mode changes
+    }
+  }
+  if (gamemode == 1) {
+    rds.clear(); //clear arraylist
     startgame(); //game starts
+  }
+  if (gamemode == 2) { //if gamemmode is 2, game over screen
+    background(0, 200, 255); //bg color
+    textSize(50); 
+    text("GAME OVER", width/2, height/2); //game over
+    textSize(30); 
+    text("Press 'Shift' to restart game", width/2, 450);
+    if (keyPressed && keyCode == SHIFT) { //if shift key is pressed
+      gamemode = 1; //game mode changes
+    }
+  }
+  if (gamemode == 3) { //if gamemode is 3, you win screen
+    background(0, 200, 255); //bg color
+    textSize(50); 
+    text("YOU WIN", width/2, height/2); //you win
+    textSize(30); 
+    text("Press 'Shift' to restart game", width/2, 450);
+    if (keyPressed && keyCode == SHIFT) { //if shift key is pressed
+      gamemode = 1; //game mode changes
+    }
   }
 }
 
@@ -91,21 +118,11 @@ void startgame() {
     }
 
     if (b.c <= 50) { //if snowman's width < 50 
-      background(0, 200, 255); //bg color
-      textSize(50); 
-      text("GAME OVER", width/2, height/2); //game over
-      textSize(30); 
-      text("Press 'Shift' to restart game", width/2, 450);
-      rds.clear(); //clear arraylist
+      gamemode = 2; //game over screen
     }
 
     if (s == 10 || b.c > 600) { //if score gets to 10
-      background(0, 200, 255); //bg color
-      textSize(50); 
-      text("YOU WIN", width/2, height/2); //you win
-      rds.clear(); //clear arraylist
-      textSize(30); 
-      text("Press 'Shift' to restart game", width/2, 450);
+      gamemode = 3; //you win screen
     }
   }
 }
