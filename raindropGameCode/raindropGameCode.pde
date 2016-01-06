@@ -5,7 +5,7 @@ Bucket b; //make bucket catcher
 
 PVector mouse;   //declare a Pvector mouse
 
-PImage sun; //declare pimage
+
 
 
 int s = 0; //declare + intialize s = score
@@ -16,12 +16,21 @@ void setup() {
   mouse = new PVector();  //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
   rds.add(new Raindrop(random(width), random(-height, 0)));
   b = new Bucket(); //bucket with diameter of 100
-  sun = loadImage("sun.png"); //loads sun image
   textAlign(CENTER); //centers text
 }
 
-void draw() {
-  println(rds.size());
+
+
+void draw () {
+  if (keyCode == SHIFT) {
+    startgame();
+  }
+}
+
+
+
+void startgame() {
+  println(rds.size()); //check size of array list
 
   background(0, 200, 255); //bg color
 
@@ -60,15 +69,16 @@ void draw() {
 
       if (r.loc.y > height) { //if randrop hits the bottom of the screen
         rds.remove(i); //remove raindrop
+        rds.clear();
       }
     }
 
-    /*if (b.diam <= 10) { //if bucket's diameter < 10 
-     background(0, 200, 255); //bg color
-     textSize(50); 
-     text("GAME OVER", width/2, height/2); //game over
-     textSize(30);
-     }*/
+    if (b.c <= 50) { //if snowman's width < 50 
+      background(0, 200, 255); //bg color
+      textSize(50); 
+      text("GAME OVER", width/2, height/2); //game over
+      textSize(30);
+    }
 
     if (s >= 10) {
       background(0, 200, 255); //bg color
