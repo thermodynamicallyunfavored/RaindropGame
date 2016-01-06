@@ -1,6 +1,5 @@
 class Bucket { //declare new class for catching raindrops
   PVector loc;
-  int diam;
   PImage s; 
   float c, d; //control size of image
 
