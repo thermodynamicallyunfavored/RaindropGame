@@ -32,33 +32,20 @@ void draw () {
     textSize(20); 
     text("The goal of this game is to make Frosty as big as possible by collecting snowballs.", width/2, height/2); 
     text("Press 'SHIFT' to start", width/2, 430);
-    if (keyPressed && keyCode == SHIFT) { //if shift key is pressed
-      gamemode = 1; //game mode changes
-    }
-  }
-  if (gamemode == 1) {
-    rds.clear(); //clear arraylist
-    startgame(); //game starts
-  }
-  if (gamemode == 2) { //if gamemmode is 2, game over screen
+  } else if (gamemode ==1) {
+    startgame();
+  } else if (gamemode == 2) { //if gamemmode is 2, game over screen
     background(0, 200, 255); //bg color
     textSize(50); 
     text("GAME OVER", width/2, height/2); //game over
     textSize(30); 
     text("Press 'Shift' to restart game", width/2, 450);
-    if (keyPressed && keyCode == SHIFT) { //if shift key is pressed
-      gamemode = 1; //game mode changes
-    }
-  }
-  if (gamemode == 3) { //if gamemode is 3, you win screen
+  } else if (gamemode == 3) { //if gamemode is 3, you win screen
     background(0, 200, 255); //bg color
     textSize(50); 
     text("YOU WIN", width/2, height/2); //you win
     textSize(30); 
     text("Press 'Shift' to restart game", width/2, 450);
-    if (keyPressed && keyCode == SHIFT) { //if shift key is pressed
-      gamemode = 1; //game mode changes
-    }
   }
 }
 
@@ -123,6 +110,23 @@ void startgame() {
 
     if (s == 10 || b.c > 600) { //if score gets to 10
       gamemode = 3; //you win screen
+    }
+  }
+}
+
+void keyPressed() {
+  if (keyCode == SHIFT) {
+    if (gamemode == 0) {
+      gamemode = 1; //game mode changes
+      rds.clear(); //clear arraylist
+    } else if (gamemode == 1) {
+      startgame(); //game starts
+    } else if (gamemode == 2) {
+      gamemode = 1; //game mode changes
+      rds.clear(); //clear arraylist
+    } else if (gamemode == 3) {
+      gamemode = 1; //game mode changes
+      rds.clear(); //clear arraylist
     }
   }
 }
