@@ -12,7 +12,7 @@ int count = 0; //counts number of raindrops in bucket
 void setup() {
   size(1200, 800); //set size of screen
   mouse = new PVector();  //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
-  rds.add(new Raindrop(random(width), random(-height, 0)));
+  rds.add(new Raindrop(random(width), random(-height, 0))); //add raindrops to arraylist
   b = new Bucket(); //bucket with diameter of 100
   melt = new Sun(); 
   textAlign(CENTER); //centers text
@@ -25,7 +25,7 @@ void draw () {
   background(0, 200, 255); //bg color
   textSize(100); 
   fill(255); 
-  text("Snowman", width/2, 350);
+  text("Snowman", width/2, 350); //beginning info and such
   textSize(20); 
   text("The goal of this game is to make Frosty as big as possible by collecting snowballs.", width/2, height/2); 
   text("Press 'SHIFT' to start", width/2, 430); 
@@ -50,10 +50,10 @@ void startgame() {
   textSize(30); //change text size
   text(s, 1150, 750); //displays score
 
-  melt.display(); 
+  melt.display(); //displays sun
 
   for (int i = 0; i < 40; i++) {
-    rds.add(new Raindrop(random(width), random(-height, 0)));
+    rds.add(new Raindrop(random(width), random(-height, 0))); //add new snowballs to array list
   }
 
   b.update(); //updates b.loc as mouse
@@ -63,6 +63,11 @@ void startgame() {
     Raindrop r = rds.get(i); //getting item in array rds at index i
     r.display(); //displays raindrop
     r.fall(); //raindrops will fall
+
+
+    if (r.melts(melt)) { //if sun touches snowball 
+      rds.remove(i); // remove snowball
+    }
 
     if (r.isInContactWith(b)) { //if a raindrop is in contact with the bucket
       rds.remove(i); //remove raindrop

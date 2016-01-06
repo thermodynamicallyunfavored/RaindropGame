@@ -36,4 +36,11 @@ class Raindrop { //create class for raindrop
       return false;
     }
   }
+  boolean melts (Sun m) { //function melt snowballs
+    if (loc.dist(m.loc) < diam/2 + m.loc.x/4) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
