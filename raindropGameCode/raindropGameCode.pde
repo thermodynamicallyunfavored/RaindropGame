@@ -86,7 +86,7 @@ void startgame() {
 
       if (r.loc.y > height) { //if randrop hits the bottom of the screen
         rds.remove(i); //remove raindrop
-        rds.clear(); //clears out array
+        rds.clear(); //clears out arraylist
       }
     }
 
@@ -96,13 +96,14 @@ void startgame() {
       text("GAME OVER", width/2, height/2); //game over
       textSize(30); 
       text("Press 'Shift' to restart game", width/2, 450);
+      rds.clear(); //clear arraylist
     }
 
     if (s == 10 || b.c > 600) { //if score gets to 10
       background(0, 200, 255); //bg color
       textSize(50); 
       text("YOU WIN", width/2, height/2); //you win
-      rds.clear();
+      rds.clear(); //clear arraylist
       textSize(30); 
       text("Press 'Shift' to restart game", width/2, 450);
     }
