@@ -8,7 +8,7 @@ class Sun { //declare new class for catching raindrops
     loc = new PVector (random(width), 100);
     vel = new PVector (random(-10, 10), 0); 
     imageMode(CENTER); //centers image
-    c = 250;
+    c = 250; 
     d = 200;
   }
 

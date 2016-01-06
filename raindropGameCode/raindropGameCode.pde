@@ -93,8 +93,8 @@ void startgame() {
         b.decrease(-15); //increases size of snowman
       } 
 
-      if (count <= 5 && s >= 5) { //if the bucket has caught < 199 raindrops and score is > 5
-        b.decrease(.1); //decreases size of snowman
+      if (count <= 500 && s >= 5) { //if the bucket has caught < 199 raindrops and score is > 5
+        b.decrease(.3); //decreases size of snowman
       }
 
       if (r.loc.y > height) { //if randrop hits the bottom of the screen
