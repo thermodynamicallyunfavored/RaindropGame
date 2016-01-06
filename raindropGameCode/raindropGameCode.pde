@@ -33,7 +33,7 @@ void draw () {
     text("The goal of this game is to make Frosty as big as possible by collecting snowballs.", width/2, height/2); 
     text("Press 'SHIFT' to start", width/2, 430);
   } else if (gamemode ==1) {
-    startgame();
+    startgame(); //starts game
   } else if (gamemode == 2) { //if gamemmode is 2, game over screen
     background(0, 200, 255); //bg color
     textSize(50); 
@@ -86,7 +86,6 @@ void startgame() {
     if (r.isInContactWith(b)) { //if a raindrop is in contact with the bucket
       rds.remove(i); //remove raindrop
       count++; //increase count each time bucket touches raindrop
-
 
       if (count >= 100) {
         s++; //increase score
