@@ -1,19 +1,26 @@
 class Bucket { //declare new class for catching raindrops
   PVector loc;
-  int diam;
-  color c; 
+  PImage s; 
+  float c, d; //control size of image
 
-  Bucket (int tdiam) { //create constructor
-    diam = tdiam; //make size of bucket changeable
-    c = color (242, 81, 56);
+  Bucket () { //create constructor
+    s = loadImage("snowman.png"); 
     loc = new PVector (random(width), random(height));
+    imageMode(CENTER); //centers image
+    c = 250;
+    d = 278;
   }
 
   void display () { //function display bucket
-    fill(c); //makes bucket red
-    ellipse (loc.x, loc.y, diam, diam);
+    image (s, loc.x, loc.y, c, d); //draw image
   }
+
   void update () {
-    loc.set(mouseX, mouseY);
+    loc.set(mouseX, mouseY); //makes loc = mouse
+  }
+
+  void decrease (float a) { //function to decrease size of img
+    c = c- a;  //decrease width
+    d = d - a; //decrease height 
   }
 }

@@ -3,14 +3,7 @@ class Raindrop { //create class for raindrop
   int diam ; //diameter for raindrop
   color c; //color for raindrop
 
-  Raindrop () {
-    diam = 60; //diameter is 20
-    loc = new PVector(random(diam, width-diam), random(diam, height-diam));
-    c = color(208, 237, 247); //makes raindrop blue
-    vel = PVector.random2D(); //velocity with random magnitude of 1
-    vel.mult(random(2, 7)); //multiplies velocity
-    g = new PVector (0.1, 0.2); //acceleration of 0,2
-  }
+
   Raindrop (float x, float y) {
     diam = 20; //diameter is 20
     loc = new PVector(x, y);
@@ -37,10 +30,17 @@ class Raindrop { //create class for raindrop
     vel.y = 0; //this way raindrop wont speed up
   }
   boolean isInContactWith(Bucket b) {
-    if (loc.dist(b.loc) < diam/2 + b.diam/2) { //if mouse is in raindrop
+    if (loc.dist(b.loc) < diam/2 + b.loc.y*.3) { //if distance between mouse and snowball is less than the snowball's raidus and image's height/3
       return true;
     } else {
       return false;
+    }
+  }
+  boolean melts (Sun m) { //function melt snowballs
+    if (loc.dist(m.loc) < diam/2 + m.loc.x/4) { //if distance is less than the diameter of the snowball + width of image/4
+      return true; //then return true
+    } else { //otherwise
+      return false; //otherwise return false
     }
   }
 }
