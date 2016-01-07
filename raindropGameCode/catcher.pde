@@ -12,7 +12,7 @@ class Bucket { //declare new class for catching raindrops
   }
 
   void display () { //function display bucket
-    image (s, loc.x, loc.y, c, d);
+    image (s, loc.x, loc.y, c, d); //draw image
   }
 
   void update () {
@@ -20,7 +20,7 @@ class Bucket { //declare new class for catching raindrops
   }
 
   void decrease (float a) { //function to decrease size of img
-    c = c- a;  
-    d = d - a;
+    c = c- a;  //decrease width
+    d = d - a; //decrease height 
   }
 }

@@ -25,34 +25,44 @@ void setup() {
 
 void draw () {
   if (gamemode == 0) { //if game mode is 0 , show start screen
-    background(0, 200, 255); //bg color
-    textSize(100); 
-    fill(255); 
-    text("Snowman", width/2, 350); //beginning info and such
-    textSize(20); 
-    text("The goal of this game is to make Frosty as big as possible by collecting snowballs.", width/2, height/2); 
-    text("Press 'SHIFT' to start", width/2, 430);
+    startscreen();
   } else if (gamemode ==1) {
-    startgame(); //starts game
+    playgame(); //starts game
   } else if (gamemode == 2) { //if gamemmode is 2, game over screen
-    background(0, 200, 255); //bg color
-    textSize(50); 
-    text("GAME OVER", width/2, height/2); //game over
-    textSize(30); 
-    text("Press 'Shift' to restart game", width/2, 450);
+    losescreen();
   } else if (gamemode == 3) { //if gamemode is 3, you win screen
-    background(0, 200, 255); //bg color
-    textSize(50); 
-    text("YOU WIN", width/2, height/2); //you win
-    textSize(30); 
-    text("Press 'Shift' to restart game", width/2, 450);
+    winscreen();
   }
 }
 
+void startscreen() {
+  background(0, 200, 255); //bg color
+  textSize(100); 
+  fill(255); 
+  text("Snowman", width/2, 350); //beginning info and such
+  textSize(20); 
+  text("The goal of this game is to make Frosty as big as possible by collecting snowballs.", width/2, height/2); 
+  text("Press 'SHIFT' to start", width/2, 430);
+}
+
+void winscreen() {
+  background(0, 200, 255); //bg color
+  textSize(50); 
+  text("YOU WIN", width/2, height/2); //you win
+  textSize(30); 
+  text("Press 'Shift' to restart game", width/2, 450);
+}
+
+void losescreen() {
+  background(0, 200, 255); //bg color
+  textSize(50); 
+  text("GAME OVER", width/2, height/2); //game over
+  textSize(30); 
+  text("Press 'Shift' to restart game", width/2, 450);
+}
 
 
-
-void startgame() {
+void playgame() { //playgame funcion
   println(rds.size()); //check size of array list
 
   background(0, 200, 255); //bg color
@@ -66,7 +76,7 @@ void startgame() {
 
   melt.display(); //displays sun
 
-  for (int i = 0; i < 40; i++) {
+  for (int i = 0; i < 40; i++) { //start w/ 40 snowballs
     rds.add(new Raindrop(random(width), random(-height, 0))); //add new snowballs to array list
   }
 
@@ -94,7 +104,7 @@ void startgame() {
       } 
 
       if (count <= 500 && s >= 5) { //if the bucket has caught < 199 raindrops and score is > 5
-        b.decrease(.3); //decreases size of snowman
+        b.decrease(.65); //decreases size of snowman
       }
 
       if (r.loc.y > height) { //if randrop hits the bottom of the screen
@@ -102,14 +112,13 @@ void startgame() {
         rds.clear(); //clears out arraylist
       }
     }
+  }
+  if (b.c <= 50) { //if snowman's width < 50 
+    gamemode = 2; //game over screen
+  }
 
-    if (b.c <= 50) { //if snowman's width < 50 
-      gamemode = 2; //game over screen
-    }
-
-    if (s == 10 || b.c > 600) { //if score gets to 10
-      gamemode = 3; //you win screen
-    }
+  if (s == 10 || b.c > 600) { //if score gets to 10
+    gamemode = 3; //you win screen
   }
 }
 
@@ -118,8 +127,6 @@ void keyPressed() {
     if (gamemode == 0) {
       gamemode = 1; //game mode changes
       rds.clear(); //clear arraylist
-    } else if (gamemode == 1) {
-      startgame(); //game starts
     } else if (gamemode == 2) {
       gamemode = 1; //game mode changes
       rds.clear(); //clear arraylist
