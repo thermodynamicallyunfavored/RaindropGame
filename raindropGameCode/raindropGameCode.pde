@@ -35,7 +35,7 @@ void draw () {
   }
 }
 
-void startscreen() {
+void startscreen() { //startscreen fuctnion
   background(0, 200, 255); //bg color
   textSize(100); 
   fill(255); 
@@ -45,7 +45,7 @@ void startscreen() {
   text("Press 'SHIFT' to start", width/2, 430);
 }
 
-void winscreen() {
+void winscreen() { //winscreen function
   background(0, 200, 255); //bg color
   textSize(50); 
   text("YOU WIN", width/2, height/2); //you win
@@ -53,7 +53,7 @@ void winscreen() {
   text("Press 'Shift' to restart game", width/2, 450);
 }
 
-void losescreen() {
+void losescreen() { //losescreen fnction
   background(0, 200, 255); //bg color
   textSize(50); 
   text("GAME OVER", width/2, height/2); //game over
@@ -104,7 +104,7 @@ void playgame() { //playgame funcion
       } 
 
       if (count <= 500 && s >= 5) { //if the bucket has caught < 199 raindrops and score is > 5
-        b.decrease(.65); //decreases size of snowman
+        b.decrease(.55); //decreases size of snowman
       }
 
       if (r.loc.y > height) { //if randrop hits the bottom of the screen
@@ -129,9 +129,15 @@ void keyPressed() {
       rds.clear(); //clear arraylist
     } else if (gamemode == 2) {
       gamemode = 1; //game mode changes
+      s = 0; //reset score
+      b.c = 250; //reset snowman's width
+      b.d = 278; //reset snowman's height
       rds.clear(); //clear arraylist
     } else if (gamemode == 3) {
       gamemode = 1; //game mode changes
+      s = 0; //reset score
+      b.c = 250; //reset snowman's width
+      b.d = 278; //reset snowman's height
       rds.clear(); //clear arraylist
     }
   }
